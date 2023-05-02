@@ -12,10 +12,10 @@ function createEmployeeRecord(employeeArray) {
     };
 }
 
-function createEmployeeRecords(createEmployeeRecord) {
+function createEmployeeRecords(employeeArrays) {
     const employeeRecords = [];
 
-    createEmployeeRecord.map(employeeArray => {
+    employeeArrays.map(employeeArray => {
         const employeeRecord = createEmployeeRecord(employeeArray);
         employeeRecords.push(employeeRecord);
     });
@@ -23,31 +23,26 @@ function createEmployeeRecords(createEmployeeRecord) {
     return employeeRecords;
 
 }
+function createTimeInEvent(employeeRecord, dateStamp) {
+    const timeInEvent = {
+        type: "TimeIn",
+        hour: parseInt(dateStamp.split(" ")[1], 10),
+        date: dateStamp.split(" ")[0]
+    };
+    employeeRecord.timeInEvent.push(timeInEvent);
+    return employeeRecord;
+}
 
-// function createTimeInEvent(employeeRecord, timeInStamp) {
-//     return{ 
-//         type: timeIn[0],
-//         hour:
-//         date:
-//     }
-//     return employeeRecord;
-// }
+function createTimeOutEvent(employeeRecord, dateStamp) {
+    const timeOutEvent = {
+        type: "TimeOut",
+        hour: parseInt(dateStamp.split(" ")[1], 10),
+        date: dateStamp.split(" ")[0]
+    };
+    employeeRecord.timeOutEvent.push(timeInEvent);
+    return employeeRecord;
+}
 
-function createTimeInEvent(employeeRecord, dateStamp)
 
-console.log(employeeRecord);
 
-// function createTimeInEvent(employeeRecord, dateStamp) {
-//     const [date, time] = dateStamp.split(' ');
-//     const hour = parseInt(time.substring(0, 2), 10);
-  
-//     const timeInObject = {
-//       type: "TimeIn",
-//       hour,
-//       date
-//     };
-  
-//     employeeRecord.timeInEvents.push(timeInObject);
-  
-//     return employeeRecord;
-//   }
+
