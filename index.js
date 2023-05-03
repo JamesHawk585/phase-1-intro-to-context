@@ -19,9 +19,7 @@ function createEmployeeRecords(employeeArrays) {
         const employeeRecord = createEmployeeRecord(employeeArray);
         employeeRecords.push(employeeRecord);
     });
-
     return employeeRecords;
-
 }
 
 function createTimeInEvent(employeeRecord, dateStamp) {
@@ -30,12 +28,22 @@ function createTimeInEvent(employeeRecord, dateStamp) {
         hour: parseInt(dateStamp.split(" ")[1], 10),
         date: dateStamp.split(" ")[0]
     };
-    if (!employeeRecord.timeInEvent) {
+    if (!employeeRecord.timeInEvents) {
         employeeRecord.timeInEvents = [];
     }
-    employeeRecord.timeInEvent.push(timeInEvent);
+    employeeRecord.timeInEvents.push(timeInEvent);
     return employeeRecord;
 }
+
+// function createTimeOutEvent(employeeRecord, dateStamp) {
+//     const timeOutEvent = {
+//         type: "TimeOut",
+//         hour: parseInt(dateStamp.split(" ")[1], 10),
+//         date: dateStamp.split(" ")[0]
+//     };
+//     employeeRecord.timeOutEvents.push(timeInEvent);
+//     return employeeRecord;
+// 
 
 function createTimeOutEvent(employeeRecord, dateStamp) {
     const timeOutEvent = {
@@ -43,7 +51,7 @@ function createTimeOutEvent(employeeRecord, dateStamp) {
         hour: parseInt(dateStamp.split(" ")[1], 10),
         date: dateStamp.split(" ")[0]
     };
-    employeeRecord.timeOutEvent.push(timeInEvent);
+    employeeRecord.timeOutEvents.push(timeOutEvent);
     return employeeRecord;
 }
 
@@ -73,4 +81,4 @@ function calculatePayroll(employeeRecords) {
       return total + allWagesFor(employeeRecord);
     }, 0);
     return totalPayroll;
-  }
+}
